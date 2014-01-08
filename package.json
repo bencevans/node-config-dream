@@ -34,5 +34,8 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.1"
   },
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "extend": "~1.2.1"
+  }
 }

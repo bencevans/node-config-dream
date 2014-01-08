@@ -6,19 +6,17 @@ module.exports = {
 
   port: 3000,
 
-  github: {
-    key: '1234567890',
-    secret: 'oasdofkjsdaoadfgafg'
+  db: {
+    host: 'localhost'
   },
 
 
-  enviroment: {
+  enviroments: {
 
     production: {
       port: 80,
-      github: {
-        key: 'PRODUCTION_KEY',
-        secret: 'PRODUCTION_SECRET'
+      db: {
+        host: 'dbserver'
       }
     }
 

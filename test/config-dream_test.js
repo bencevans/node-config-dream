@@ -26,41 +26,45 @@ exports['ConfigDream'] = {
   'both files found': function(test) {
     test.expect(1);
     test.deepEqual(configDream(__dirname + '/config', __dirname + '/config.user'), {
-      "siteName":"Example App: Dev",
-      "port":1337,
-      "github":{
-        "key":"1234567890",
-        "secret":"oasdofkjsdaoadfgafg"
+
+      siteName: 'Example App: Dev',
+
+      port: 1337,
+
+      db: {
+        host: 'localhost'
       },
-      "enviroment":{
-        "production":{
-          "port":80,
-          "github":{
-            "key":"PRODUCTION_KEY",
-            "secret":"PRODUCTION_SECRET"
+
+
+      enviroments: {
+
+        production: {
+          port: 80,
+          db: {
+            host: 'dbserver'
           }
         }
+
       }
-    }, 'should output a merged config & config.user');
+
+  }, 'should output a merged config & config.user');
     test.done();
   },
 
   'no user file found': function(test) {
     test.expect(1);
-    test.deepEqual(configDream(__dirname + '/config', __dirname + '/config.userdoesnotexist'), {
+    test.deepEqual(configDream(__dirname + '/config', __dirname + '/configa'), {
       "siteName":"Example App: Dev",
       "port":3000,
-      "github":{
-        "key":"1234567890",
-        "secret":"oasdofkjsdaoadfgafg"
+      "db": {
+        host:"localhost"
       },
-      "enviroment":{
+      "enviroments":{
         "production":{
-          "port":80,
-          "github":{
-            "key":"PRODUCTION_KEY",
-            "secret":"PRODUCTION_SECRET"
-          }
+          "db": {
+            host:"dbserver"
+          },
+          "port":80
         }
       }
     }, 'should output a merged config & config.user');
